@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #box {
+      height: 100px;
+      width: 100px;
+      background: red;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <div id="box" draggable="true"></div>
+  <script>
+    var dragdiv = document.querySelector('#box');
+    var x, y;  //记录到点击时鼠标到移动框左边和上边的距离
+
+    dragdiv.addEventListener('dragstart', function (e) {
+        e.dataTransfer.effectAllowed = "move";  //移动效果
+        e.dataTransfer.setData("text", '');  //附加数据，　没有这一项，firefox中无法移动
+        x = e.offsetX || e.layerX;
+        y = e.offsetY || e.layerY;
+    }, false);
+
+    document.addEventListener('dragover', function (e) {//取消冒泡 ,不取消则不能触发 drop事件
+        e.preventDefault()|| e.stopPropagation();
+    }, false);
+
+    document.addEventListener('drop', function (e) {
+        dragdiv.style.left = (e.pageX - x) + 'px';
+        dragdiv.style.top = (e.pageY - y) + 'px';
+        e.preventDefault() || e.stopPropagation();  //不取消，firefox中会触发网页跳转到查找setData中的内容
+    }, false);
+  </script> 
+</body>
+</html>

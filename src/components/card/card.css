@@ -1,0 +1,23 @@
+#box {
+  border-radius: var(--border-radius-base, var(--wc-border-radius-base));
+  border-color: var(--border-color-base, var(--wc-border-color-base));
+  border-width: 1px;
+  border-style: solid;
+  box-shadow: var(--shadow-base, var(--wc-shadow-base));
+  position: fixed;
+  left: 100px;
+  top:100px;
+  bottom: 200px;
+  right: 200px; 
+}
+#header {
+  font-size: var(--font-size-base, var(--wc-font-size-base));
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--border-color-base, var(--wc-border-color-base));
+  cursor: move;
+  padding: 16px 24px;
+}
+#header::after {
+  float: right; 
+}

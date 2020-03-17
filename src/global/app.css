@@ -1,0 +1,26 @@
+:host {
+  /* 全局色 */
+  --wc-primary-color: #1890ff;
+  /* 链接色 */
+  --wc-link-color: #1890ff;
+  /* 成功色 */
+  --wc-success-color: #52c41a;
+  /* 警告色 */
+  --wc-warning-color: #faad14;
+  /* 错误色 */
+  --wc-error-color: #f5222d;
+  /* 主字号 */
+  --wc-font-size-base: 14px;
+  /*  主文本色 */
+  --wc-text-color: rgba(0, 0, 0, 0.65);
+  /* 次文本色 */
+  --wc-text-color-secondary: rgba(0, 0, 0, 0.45);
+  /* 失效色 */
+  --wc-disabled-color: rgba(0, 0, 0, 0.25); 
+  /* 圆角 */
+  --wc-border-radius-base: 2px;
+  /* 边框色 */
+  --wc-border-color-base: #d9d9d9;
+  /* 浮层阴影 */
+  --wc-shadow-base: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
