@@ -28,6 +28,14 @@ export namespace Components {
     'height': string;
     'width': string;
   }
+  interface WcTable {
+    'delCol': (index: number) => void;
+    'delRow': (index: number) => void;
+    'editCell': (rowIndex: number, colIndex: number, value: any) => void;
+    'insertCol': (destIndex: number) => void;
+    'insertRow': (destIndex: number) => void;
+    'tableData': [][];
+  }
 }
 
 declare global {
@@ -44,9 +52,16 @@ declare global {
     prototype: HTMLWcCardElement;
     new (): HTMLWcCardElement;
   };
+
+  interface HTMLWcTableElement extends Components.WcTable, HTMLStencilElement {}
+  var HTMLWcTableElement: {
+    prototype: HTMLWcTableElement;
+    new (): HTMLWcTableElement;
+  };
   interface HTMLElementTagNameMap {
     'my-component': HTMLMyComponentElement;
     'wc-card': HTMLWcCardElement;
+    'wc-table': HTMLWcTableElement;
   }
 }
 
@@ -69,10 +84,19 @@ declare namespace LocalJSX {
     'height'?: string;
     'width'?: string;
   }
+  interface WcTable {
+    'delCol'?: (index: number) => void;
+    'delRow'?: (index: number) => void;
+    'editCell'?: (rowIndex: number, colIndex: number, value: any) => void;
+    'insertCol'?: (destIndex: number) => void;
+    'insertRow'?: (destIndex: number) => void;
+    'tableData'?: [][];
+  }
 
   interface IntrinsicElements {
     'my-component': MyComponent;
     'wc-card': WcCard;
+    'wc-table': WcTable;
   }
 }
 
@@ -84,6 +108,7 @@ declare module "@stencil/core" {
     interface IntrinsicElements {
       'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
       'wc-card': LocalJSX.WcCard & JSXBase.HTMLAttributes<HTMLWcCardElement>;
+      'wc-table': LocalJSX.WcTable & JSXBase.HTMLAttributes<HTMLWcTableElement>;
     }
   }
 }

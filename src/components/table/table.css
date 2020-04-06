@@ -1,0 +1,23 @@
+:host {
+  display: block;
+}
+table {
+  font-size: var(--font-size-base, var(--wc-font-size-base));
+  border-collapse: collapse;
+  resize: horizontal;
+  overflow: auto;
+}
+
+th, td {
+  padding: 8px;
+  border: 1px solid #ebeef5;
+}
+
+table input {
+  border: none;
+}
+
+.index {
+  text-align: center;
+  width: 30px;
+}
