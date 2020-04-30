@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Prop, Host, h } from '@stencil/core';
 const data = {
   a: 1,
   b: {
@@ -12,39 +12,41 @@ const data = {
   shadow: true
 })
 export class JsonView {
-  renderObjectComp(data: Object) {
-    const _data = Object.entries(data);
+  @Prop() data: Object = data;
+
+  renderObjectComp() {
+    const _data = Object.entries(this.data);
     return  (
       <div>
         {_data.map(([key, value]) => {
           if (typeof(value) !== 'object') {
             return (
-              <div style={{ padding: '5px 16' }}>
+              <div style={{ padding: '5px 16px' }}>
                 <span>{`${key}: `}</span>
                 <span>{value}</span>
               </div>
             )
           } else {
             return (
-              <div style={{ padding: '5px 16px' }}>
-                <span>+</span>
-                <span>{`${key}: `}</span>
-                <span>[</span>
-                {this.renderObjectComp(value)}
-                <div>]</div>
-              </div>
+              <json-object-value
+                jsonKey={key}
+                jsonVal={value}
+              />
             )
           }
         })}
       </div>
     );
   }
+
   render() {
     return (
       <Host>
-        {this.renderObjectComp(data)}
+        {this.renderObjectComp()}
       </Host>
     );
   }
 
 }
+
+

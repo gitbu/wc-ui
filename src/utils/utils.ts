@@ -14,3 +14,10 @@ export function getNumber(data: string): number {
 
   return +res[0];
 }
+
+const _toString = Object.prototype.toString;
+
+const rawType = (data) => _toString.call(data).slice(8, -1);
+
+export const isObject = (data) => rawType(data) === 'Object';
+
