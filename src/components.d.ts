@@ -10,6 +10,10 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
+  interface JsonObjectValue {
+    'jsonKey': String;
+    'jsonVal': Object;
+  }
   interface MyComponent {
     /**
     * The first name
@@ -28,6 +32,9 @@ export namespace Components {
     'height': string;
     'width': string;
   }
+  interface WcJsonView {
+    'data': Object;
+  }
   interface WcTable {
     'delCol': (index: number) => void;
     'delRow': (index: number) => void;
@@ -41,6 +48,12 @@ export namespace Components {
 declare global {
 
 
+  interface HTMLJsonObjectValueElement extends Components.JsonObjectValue, HTMLStencilElement {}
+  var HTMLJsonObjectValueElement: {
+    prototype: HTMLJsonObjectValueElement;
+    new (): HTMLJsonObjectValueElement;
+  };
+
   interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
   var HTMLMyComponentElement: {
     prototype: HTMLMyComponentElement;
@@ -53,19 +66,31 @@ declare global {
     new (): HTMLWcCardElement;
   };
 
+  interface HTMLWcJsonViewElement extends Components.WcJsonView, HTMLStencilElement {}
+  var HTMLWcJsonViewElement: {
+    prototype: HTMLWcJsonViewElement;
+    new (): HTMLWcJsonViewElement;
+  };
+
   interface HTMLWcTableElement extends Components.WcTable, HTMLStencilElement {}
   var HTMLWcTableElement: {
     prototype: HTMLWcTableElement;
     new (): HTMLWcTableElement;
   };
   interface HTMLElementTagNameMap {
+    'json-object-value': HTMLJsonObjectValueElement;
     'my-component': HTMLMyComponentElement;
     'wc-card': HTMLWcCardElement;
+    'wc-json-view': HTMLWcJsonViewElement;
     'wc-table': HTMLWcTableElement;
   }
 }
 
 declare namespace LocalJSX {
+  interface JsonObjectValue {
+    'jsonKey'?: String;
+    'jsonVal'?: Object;
+  }
   interface MyComponent {
     /**
     * The first name
@@ -84,6 +109,9 @@ declare namespace LocalJSX {
     'height'?: string;
     'width'?: string;
   }
+  interface WcJsonView {
+    'data'?: Object;
+  }
   interface WcTable {
     'delCol'?: (index: number) => void;
     'delRow'?: (index: number) => void;
@@ -94,8 +122,10 @@ declare namespace LocalJSX {
   }
 
   interface IntrinsicElements {
+    'json-object-value': JsonObjectValue;
     'my-component': MyComponent;
     'wc-card': WcCard;
+    'wc-json-view': WcJsonView;
     'wc-table': WcTable;
   }
 }
@@ -106,8 +136,10 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
+      'json-object-value': LocalJSX.JsonObjectValue & JSXBase.HTMLAttributes<HTMLJsonObjectValueElement>;
       'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
       'wc-card': LocalJSX.WcCard & JSXBase.HTMLAttributes<HTMLWcCardElement>;
+      'wc-json-view': LocalJSX.WcJsonView & JSXBase.HTMLAttributes<HTMLWcJsonViewElement>;
       'wc-table': LocalJSX.WcTable & JSXBase.HTMLAttributes<HTMLWcTableElement>;
     }
   }
