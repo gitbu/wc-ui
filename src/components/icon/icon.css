@@ -1,0 +1,21 @@
+:host{
+  font-size:inherit;
+  display:inline-block;
+  transition:.3s;
+}
+.icon {
+  display:block;
+  width: 1em;
+  height: 1em;
+  margin: auto;
+  fill: currentColor;
+  overflow: hidden;
+}
+:host([spin]){
+  animation: rotate 1.4s linear infinite;
+}
+@keyframes rotate{
+  to{
+      transform: rotate(360deg); 
+  }
+}

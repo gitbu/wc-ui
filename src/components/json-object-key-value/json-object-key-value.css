@@ -1,0 +1,52 @@
+:host {
+  display: block;
+}
+.brace {
+  font-weight: bold;
+}
+
+.icon-container {
+  margin-right: 8px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.add-modal {
+  display: block;
+  position: absolute;
+  top: 15px;
+  background: #f8f8f2;
+  padding: 10px;
+  border-radius: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.modal-mask {
+  position: absolute;
+  top: 0px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff4d;
+}
+
+.modal-close {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+.modal-input {
+  border: none;
+  border-radius: 2px;
+  height: 20px;
+}
+.modal-ok-btn {
+  cursor: pointer;
+  height: 23px;
+  background: #409eff;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  margin-left: 5px;
+}

@@ -21,3 +21,5 @@ const rawType = (data) => _toString.call(data).slice(8, -1);
 
 export const isObject = (data) => rawType(data) === 'Object';
 
+export const isArray = (data) => rawType(data) === 'Array';
+

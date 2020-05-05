@@ -1,3 +1,14 @@
 :host {
   display: block;
 }
+.container {
+  font-family: monospace;
+  cursor: default;
+  color: #f9f8f5;
+  background-color: rgb(39, 40, 34);
+  position: relative;
+  padding: 10px;
+  border-radius: 3px;
+  margin: 10px 0px;
+}
+

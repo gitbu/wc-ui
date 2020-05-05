@@ -10,10 +10,6 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
-  interface JsonObjectValue {
-    'jsonKey': String;
-    'jsonVal': Object;
-  }
   interface MyComponent {
     /**
     * The first name
@@ -32,8 +28,60 @@ export namespace Components {
     'height': string;
     'width': string;
   }
-  interface WcJsonView {
+  interface WcIcon {
+    'color'?: string;
+    'cursor': any;
+    'size'?: string;
+    'type': any;
+  }
+  interface WcJsonObjectContent {
+    'addAble': boolean;
+    'addData': Function;
+    'canDrag': boolean;
+    'collapsed': any;
     'data': Object;
+    'dragData': Function;
+    'dropZonePath': string;
+    'editAble': boolean;
+    'editData': Function;
+    'path': string;
+    'removeAble': boolean;
+    'removeData': Function;
+    'setDropZonePath': Function;
+  }
+  interface WcJsonObjectKeyValue {
+    'addAble': boolean;
+    'addData': Function;
+    'canDrag': boolean;
+    'collapsed': boolean | string;
+    'dragData': Function;
+    'dropZonePath': string;
+    'editAble': boolean;
+    'editData': Function;
+    'jsonKey': String;
+    'jsonVal': Object;
+    'path': string;
+    'removeAble': boolean;
+    'removeData': Function;
+    'setDropZonePath': Function;
+  }
+  interface WcJsonVariableRow {
+    'canDrag': boolean;
+    'editAble': boolean;
+    'editData': Function;
+    'jsonKey': string;
+    'jsonVal': any;
+    'path': string;
+    'removeAble': boolean;
+    'removeData': Function;
+  }
+  interface WcJsonView {
+    'addAble': boolean;
+    'canDrag': boolean;
+    'collapsed': boolean | string;
+    'data': object;
+    'editAble': boolean;
+    'removeAble': boolean;
   }
   interface WcTable {
     'delCol': (index: number) => void;
@@ -48,12 +96,6 @@ export namespace Components {
 declare global {
 
 
-  interface HTMLJsonObjectValueElement extends Components.JsonObjectValue, HTMLStencilElement {}
-  var HTMLJsonObjectValueElement: {
-    prototype: HTMLJsonObjectValueElement;
-    new (): HTMLJsonObjectValueElement;
-  };
-
   interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
   var HTMLMyComponentElement: {
     prototype: HTMLMyComponentElement;
@@ -64,6 +106,30 @@ declare global {
   var HTMLWcCardElement: {
     prototype: HTMLWcCardElement;
     new (): HTMLWcCardElement;
+  };
+
+  interface HTMLWcIconElement extends Components.WcIcon, HTMLStencilElement {}
+  var HTMLWcIconElement: {
+    prototype: HTMLWcIconElement;
+    new (): HTMLWcIconElement;
+  };
+
+  interface HTMLWcJsonObjectContentElement extends Components.WcJsonObjectContent, HTMLStencilElement {}
+  var HTMLWcJsonObjectContentElement: {
+    prototype: HTMLWcJsonObjectContentElement;
+    new (): HTMLWcJsonObjectContentElement;
+  };
+
+  interface HTMLWcJsonObjectKeyValueElement extends Components.WcJsonObjectKeyValue, HTMLStencilElement {}
+  var HTMLWcJsonObjectKeyValueElement: {
+    prototype: HTMLWcJsonObjectKeyValueElement;
+    new (): HTMLWcJsonObjectKeyValueElement;
+  };
+
+  interface HTMLWcJsonVariableRowElement extends Components.WcJsonVariableRow, HTMLStencilElement {}
+  var HTMLWcJsonVariableRowElement: {
+    prototype: HTMLWcJsonVariableRowElement;
+    new (): HTMLWcJsonVariableRowElement;
   };
 
   interface HTMLWcJsonViewElement extends Components.WcJsonView, HTMLStencilElement {}
@@ -78,19 +144,18 @@ declare global {
     new (): HTMLWcTableElement;
   };
   interface HTMLElementTagNameMap {
-    'json-object-value': HTMLJsonObjectValueElement;
     'my-component': HTMLMyComponentElement;
     'wc-card': HTMLWcCardElement;
+    'wc-icon': HTMLWcIconElement;
+    'wc-json-object-content': HTMLWcJsonObjectContentElement;
+    'wc-json-object-key-value': HTMLWcJsonObjectKeyValueElement;
+    'wc-json-variable-row': HTMLWcJsonVariableRowElement;
     'wc-json-view': HTMLWcJsonViewElement;
     'wc-table': HTMLWcTableElement;
   }
 }
 
 declare namespace LocalJSX {
-  interface JsonObjectValue {
-    'jsonKey'?: String;
-    'jsonVal'?: Object;
-  }
   interface MyComponent {
     /**
     * The first name
@@ -109,8 +174,60 @@ declare namespace LocalJSX {
     'height'?: string;
     'width'?: string;
   }
-  interface WcJsonView {
+  interface WcIcon {
+    'color'?: string;
+    'cursor'?: any;
+    'size'?: string;
+    'type'?: any;
+  }
+  interface WcJsonObjectContent {
+    'addAble'?: boolean;
+    'addData'?: Function;
+    'canDrag'?: boolean;
+    'collapsed'?: any;
     'data'?: Object;
+    'dragData'?: Function;
+    'dropZonePath'?: string;
+    'editAble'?: boolean;
+    'editData'?: Function;
+    'path'?: string;
+    'removeAble'?: boolean;
+    'removeData'?: Function;
+    'setDropZonePath'?: Function;
+  }
+  interface WcJsonObjectKeyValue {
+    'addAble'?: boolean;
+    'addData'?: Function;
+    'canDrag'?: boolean;
+    'collapsed'?: boolean | string;
+    'dragData'?: Function;
+    'dropZonePath'?: string;
+    'editAble'?: boolean;
+    'editData'?: Function;
+    'jsonKey'?: String;
+    'jsonVal'?: Object;
+    'path'?: string;
+    'removeAble'?: boolean;
+    'removeData'?: Function;
+    'setDropZonePath'?: Function;
+  }
+  interface WcJsonVariableRow {
+    'canDrag'?: boolean;
+    'editAble'?: boolean;
+    'editData'?: Function;
+    'jsonKey'?: string;
+    'jsonVal'?: any;
+    'path'?: string;
+    'removeAble'?: boolean;
+    'removeData'?: Function;
+  }
+  interface WcJsonView {
+    'addAble'?: boolean;
+    'canDrag'?: boolean;
+    'collapsed'?: boolean | string;
+    'data'?: object;
+    'editAble'?: boolean;
+    'removeAble'?: boolean;
   }
   interface WcTable {
     'delCol'?: (index: number) => void;
@@ -122,9 +239,12 @@ declare namespace LocalJSX {
   }
 
   interface IntrinsicElements {
-    'json-object-value': JsonObjectValue;
     'my-component': MyComponent;
     'wc-card': WcCard;
+    'wc-icon': WcIcon;
+    'wc-json-object-content': WcJsonObjectContent;
+    'wc-json-object-key-value': WcJsonObjectKeyValue;
+    'wc-json-variable-row': WcJsonVariableRow;
     'wc-json-view': WcJsonView;
     'wc-table': WcTable;
   }
@@ -136,9 +256,12 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
-      'json-object-value': LocalJSX.JsonObjectValue & JSXBase.HTMLAttributes<HTMLJsonObjectValueElement>;
       'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
       'wc-card': LocalJSX.WcCard & JSXBase.HTMLAttributes<HTMLWcCardElement>;
+      'wc-icon': LocalJSX.WcIcon & JSXBase.HTMLAttributes<HTMLWcIconElement>;
+      'wc-json-object-content': LocalJSX.WcJsonObjectContent & JSXBase.HTMLAttributes<HTMLWcJsonObjectContentElement>;
+      'wc-json-object-key-value': LocalJSX.WcJsonObjectKeyValue & JSXBase.HTMLAttributes<HTMLWcJsonObjectKeyValueElement>;
+      'wc-json-variable-row': LocalJSX.WcJsonVariableRow & JSXBase.HTMLAttributes<HTMLWcJsonVariableRowElement>;
       'wc-json-view': LocalJSX.WcJsonView & JSXBase.HTMLAttributes<HTMLWcJsonViewElement>;
       'wc-table': LocalJSX.WcTable & JSXBase.HTMLAttributes<HTMLWcTableElement>;
     }

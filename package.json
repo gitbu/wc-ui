@@ -24,5 +24,8 @@
   "devDependencies": {
     "@stencil/core": "^1.8.8"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.15"
+  }
 }
