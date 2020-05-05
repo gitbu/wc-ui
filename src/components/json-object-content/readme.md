@@ -7,14 +7,21 @@
 
 ## Properties
 
-| Property     | Attribute     | Description | Type      | Default     |
-| ------------ | ------------- | ----------- | --------- | ----------- |
-| `addAble`    | `add-able`    |             | `boolean` | `undefined` |
-| `canDrag`    | `can-drag`    |             | `boolean` | `undefined` |
-| `data`       | --            |             | `Object`  | `undefined` |
-| `editAble`   | `edit-able`   |             | `boolean` | `undefined` |
-| `path`       | `path`        |             | `string`  | `''`        |
-| `removeAble` | `remove-able` |             | `boolean` | `undefined` |
+| Property          | Attribute        | Description | Type       | Default     |
+| ----------------- | ---------------- | ----------- | ---------- | ----------- |
+| `addAble`         | `add-able`       |             | `boolean`  | `undefined` |
+| `addData`         | --               |             | `Function` | `undefined` |
+| `canDrag`         | `can-drag`       |             | `boolean`  | `undefined` |
+| `collapsed`       | `collapsed`      |             | `any`      | `undefined` |
+| `data`            | --               |             | `Object`   | `undefined` |
+| `dragData`        | --               |             | `Function` | `undefined` |
+| `dropZonePath`    | `drop-zone-path` |             | `string`   | `undefined` |
+| `editAble`        | `edit-able`      |             | `boolean`  | `undefined` |
+| `editData`        | --               |             | `Function` | `undefined` |
+| `path`            | `path`           |             | `string`   | `''`        |
+| `removeAble`      | `remove-able`    |             | `boolean`  | `undefined` |
+| `removeData`      | --               |             | `Function` | `undefined` |
+| `setDropZonePath` | --               |             | `Function` | `undefined` |
 
 
 ## Dependencies
@@ -22,7 +29,6 @@
 ### Used by
 
  - [wc-json-object-key-value](../json-object-key-value)
- - [wc-json-view](../json-view)
 
 ### Depends on
 
@@ -40,7 +46,6 @@ graph TD;
   wc-json-object-key-value --> wc-icon
   wc-json-object-key-value --> wc-json-object-content
   wc-json-object-key-value --> wc-json-object-content
-  wc-json-view --> wc-json-object-content
   style wc-json-object-content fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -7,14 +7,16 @@
 
 ## Properties
 
-| Property     | Attribute     | Description | Type      | Default     |
-| ------------ | ------------- | ----------- | --------- | ----------- |
-| `canDrag`    | `can-drag`    |             | `boolean` | `undefined` |
-| `editAble`   | `edit-able`   |             | `boolean` | `undefined` |
-| `jsonKey`    | `json-key`    |             | `string`  | `undefined` |
-| `jsonVal`    | `json-val`    |             | `any`     | `undefined` |
-| `path`       | `path`        |             | `string`  | `undefined` |
-| `removeAble` | `remove-able` |             | `boolean` | `undefined` |
+| Property     | Attribute     | Description | Type       | Default     |
+| ------------ | ------------- | ----------- | ---------- | ----------- |
+| `canDrag`    | `can-drag`    |             | `boolean`  | `undefined` |
+| `editAble`   | `edit-able`   |             | `boolean`  | `undefined` |
+| `editData`   | --            |             | `Function` | `undefined` |
+| `jsonKey`    | `json-key`    |             | `string`   | `undefined` |
+| `jsonVal`    | `json-val`    |             | `any`      | `undefined` |
+| `path`       | `path`        |             | `string`   | `undefined` |
+| `removeAble` | `remove-able` |             | `boolean`  | `undefined` |
+| `removeData` | --            |             | `Function` | `undefined` |
 
 
 ## Dependencies

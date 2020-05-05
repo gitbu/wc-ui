@@ -10,6 +10,7 @@
 | Property | Attribute | Description | Type     | Default     |
 | -------- | --------- | ----------- | -------- | ----------- |
 | `color`  | `color`   |             | `string` | `'#181818'` |
+| `cursor` | `cursor`  |             | `any`    | `undefined` |
 | `size`   | `size`    |             | `string` | `'16px'`    |
 | `type`   | `type`    |             | `any`    | `undefined` |
 
