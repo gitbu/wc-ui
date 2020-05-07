@@ -7,14 +7,21 @@
 
 ## Properties
 
-| Property    | Attribute | Description | Type                                                       | Default |
-| ----------- | --------- | ----------- | ---------------------------------------------------------- | ------- |
-| `delCol`    | --        |             | `(index: number) => void`                                  | `noop`  |
-| `delRow`    | --        |             | `(index: number) => void`                                  | `noop`  |
-| `editCell`  | --        |             | `(rowIndex: number, colIndex: number, value: any) => void` | `noop`  |
-| `insertCol` | --        |             | `(destIndex: number) => void`                              | `noop`  |
-| `insertRow` | --        |             | `(destIndex: number) => void`                              | `noop`  |
-| `tableData` | --        |             | `[][]`                                                     | `[[]]`  |
+| Property      | Attribute      | Description | Type      | Default     |
+| ------------- | -------------- | ----------- | --------- | ----------- |
+| `colOperable` | `col-operable` |             | `boolean` | `true`      |
+| `tableData`   | `table-data`   |             | `any`     | `undefined` |
+
+
+## Events
+
+| Event       | Description | Type               |
+| ----------- | ----------- | ------------------ |
+| `delCol`    |             | `CustomEvent<any>` |
+| `delRow`    |             | `CustomEvent<any>` |
+| `editCell`  |             | `CustomEvent<any>` |
+| `insertCol` |             | `CustomEvent<any>` |
+| `insertRow` |             | `CustomEvent<any>` |
 
 
 ----------------------------------------------

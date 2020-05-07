@@ -22,6 +22,7 @@
 | `path`            | `path`           |             | `string`            | `undefined` |
 | `removeAble`      | `remove-able`    |             | `boolean`           | `false`     |
 | `removeData`      | --               |             | `Function`          | `undefined` |
+| `selectNode`      | --               |             | `Function`          | `undefined` |
 | `setDropZonePath` | --               |             | `Function`          | `undefined` |
 
 

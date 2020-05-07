@@ -17,6 +17,7 @@
 | `path`       | `path`        |             | `string`   | `undefined` |
 | `removeAble` | `remove-able` |             | `boolean`  | `undefined` |
 | `removeData` | --            |             | `Function` | `undefined` |
+| `selectNode` | --            |             | `Function` | `undefined` |
 
 
 ## Dependencies

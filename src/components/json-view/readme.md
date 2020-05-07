@@ -7,14 +7,21 @@
 
 ## Properties
 
-| Property     | Attribute     | Description | Type                | Default |
-| ------------ | ------------- | ----------- | ------------------- | ------- |
-| `addAble`    | `add-able`    |             | `boolean`           | `false` |
-| `canDrag`    | `can-drag`    |             | `boolean`           | `false` |
-| `collapsed`  | `collapsed`   |             | `boolean \| string` | `'1'`   |
-| `data`       | --            |             | `object`            | `data`  |
-| `editAble`   | `edit-able`   |             | `boolean`           | `false` |
-| `removeAble` | `remove-able` |             | `boolean`           | `false` |
+| Property     | Attribute     | Description | Type                | Default     |
+| ------------ | ------------- | ----------- | ------------------- | ----------- |
+| `addAble`    | `add-able`    |             | `boolean`           | `false`     |
+| `canDrag`    | `can-drag`    |             | `boolean`           | `false`     |
+| `collapsed`  | `collapsed`   |             | `boolean \| string` | `'1'`       |
+| `datas`      | `datas`       |             | `string`            | `undefined` |
+| `editAble`   | `edit-able`   |             | `boolean`           | `false`     |
+| `removeAble` | `remove-able` |             | `boolean`           | `false`     |
+
+
+## Events
+
+| Event        | Description | Type               |
+| ------------ | ----------- | ------------------ |
+| `selectNode` |             | `CustomEvent<any>` |
 
 
 ## Dependencies
