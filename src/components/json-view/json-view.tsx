@@ -1,30 +1,9 @@
-import { Component, h, Prop, State } from '@stencil/core';
+import { Component, h, Prop, State, Event } from '@stencil/core';
 import set from 'lodash/set';
 import cloneDeep from 'lodash/cloneDeep';
 import { isObject, isArray } from '../../utils/utils';
 
-const data = {
-  a: 1,
-  likes: [
-    'football'
-  ],
-  b: {
-    m: 2,
-    frends: [{
-      name: 'xm1',
-      age: 1,
-    }, {
-      name: 'xh1',
-      age: 2,
-    }],
-    t: {
-      h: 33,
-      j: 44,
-    },
-    s: true,
-    n: null,
-  }
-}
+
 @Component({
   tag: 'wc-json-view',
   styleUrl: 'json-view.css',
@@ -32,12 +11,26 @@ const data = {
 })
 export class JsonView {
   @State() dropZonePath = '';
-  @Prop({ mutable: true }) data: object = data;
+
+  @Prop({ mutable: true }) datas: string;
   @Prop() addAble: boolean = false;
   @Prop() editAble: boolean = false;
   @Prop() removeAble: boolean = false;
   @Prop() canDrag: boolean = false;
   @Prop() collapsed: boolean | string = '1';
+
+  @State() data = JSON.parse(this.datas);
+
+  @Event({
+    eventName: 'selectNode',
+    composed: true,
+    cancelable: true,
+    bubbles: true,
+  }) selectNode
+
+  handleSelectNode = (data) => {
+    this.selectNode.emit(data)
+  }
 
   addData = (path, value) => {
     const nodes = path.split('.');
@@ -110,6 +103,7 @@ export class JsonView {
   }
 
   render() {
+    console.log(this.data);
     return (
       <div class="container">
         <wc-json-object-key-value
@@ -126,6 +120,7 @@ export class JsonView {
           addData={this.addData}
           removeData={this.removeData}
           setDropZonePath={this.setDropZonePath}
+          selectNode={this.handleSelectNode}
         />
       </div>
     );

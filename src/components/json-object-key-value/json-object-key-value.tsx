@@ -24,6 +24,7 @@ export class JsonObjectKeyValue {
   @Prop() dragData: Function;
   @Prop() setDropZonePath: Function;
   @Prop() editData: Function;
+  @Prop() selectNode?: Function
   @Prop() removeAble: boolean = false;
   @Prop() canDrag: boolean = false;
   @Prop() collapsed: boolean | string;
@@ -128,6 +129,7 @@ export class JsonObjectKeyValue {
               editData={this.editData}
               dragData={this.dragData}
               collapsed={this.collapsed}
+              selectNode={this.selectNode}
             />
           )}
           {this.open && (

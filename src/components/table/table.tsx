@@ -1,4 +1,4 @@
-import { Component, Prop, h } from '@stencil/core';
+import { Component, Prop, h, State, Watch, Event } from '@stencil/core';
 
 @Component({
   tag: 'wc-table',
@@ -9,66 +9,80 @@ import { Component, Prop, h } from '@stencil/core';
   shadow: true
 })
 export class Table {
-  @Prop() insertRow: (destIndex: number) => void = noop
-  @Prop() delRow: (index: number) => void = noop
-  @Prop() insertCol: (destIndex: number) => void = noop
-  @Prop() delCol: (index: number) => void = noop
-  @Prop() editCell: (rowIndex: number, colIndex: number, value: any) => void = noop
+  @Prop() tableData;
+  @Prop() colOperable: boolean = true;
 
-  @Prop() tableData: [][] = [[]];
+  @State() data = JSON.parse(this.tableData)
 
+  @Watch('tableData')
+  changeData(newVal) {
+    this.data = JSON.parse(newVal)
+  }
 
+  @Event() insertRow
+  @Event() delRow
+  @Event() insertCol
+  @Event() delCol
+  @Event() editCell
 
   handleAddRow = (index) => () => {
-    this.insertRow(index + 1);
+    this.insertRow.emit(index + 1);
   }
 
   handleDelRow = (index) => () => {
-    this.delRow(index)
+    this.delRow.emit(index)
   }
 
   handleAddCol = (index) => () => {
-    this.insertCol(index);
+    this.insertCol.emit(index);
   }
 
   handleDelCol = (index) => () => {
-    this.delCol(index)
+    this.delCol.emit(index)
   }
 
-  editCeil = (rowIndex: number, colIndex: number) => (e: any) => {
-    this.editCell(rowIndex, colIndex, e.target.value);
+  handleEditCell = (rowIndex: number, colIndex: number) => (e: any) => {
+    const data = {
+      rowIndex,
+      colIndex,
+      value: e.target.value
+    };
+    this.editCell.emit(data);
   }
 
   get rowNum() {
-    return this.tableData.length;
+    return this.data.length;
   }
 
   get colNum() {
-    return this.tableData[0].length + 1;
+    return this.data[0].length + 1;
   }
 
   render() {
     return (
       <table>
-        <tr>
-          {Array.from({length: this.colNum}, () => 0).map((...item) => (
-            <td
-              style={{...plusStyle, height: '16px' }}
-            >
-              <div style={{ display: 'flex', justifyContent: 'space-around'}}>
-                <span onClick={this.handleAddCol(item[1])} style={{ cursor: 'pointer' }}>
-                  +
-                </span>
-                {item[1] !== 0 && (
-                  <span onClick={this.handleDelCol(item[1] - 1)} style={{ cursor: 'pointer' }}>
-                    -
+        {this.colOperable && (
+          <tr>
+            {Array.from({length: this.colNum}, () => 0).map((...item) => (
+              <td
+                style={{...plusStyle, height: '16px' }}
+              >
+                <div style={{ display: 'flex', justifyContent: 'space-around'}}>
+                  <span onClick={this.handleAddCol(item[1])} style={{ cursor: 'pointer' }}>
+                    +
                   </span>
-                )}
-              </div>
-            </td>
-          ))}
-        </tr>
-        {this.tableData.map((item, rowIndex) => (
+                  {item[1] !== 0 && (
+                    <span onClick={this.handleDelCol(item[1] - 1)} style={{ cursor: 'pointer' }}>
+                      -
+                    </span>
+                  )}
+                </div>
+              </td>
+            ))}
+          </tr>
+
+        )}
+        {this.data.map((item, rowIndex) => (
           <tr>
             {rowIndex === 0
               ? <td class="index">序号</td>
@@ -78,10 +92,15 @@ export class Table {
             {item.map((data, colIndex) => (
               <td>
                 <div>
-                <CellInput
-                  value={data}
-                  onChange={this.editCeil(rowIndex, colIndex)}
-                />
+                {rowIndex === 0 && !this.colOperable
+                  ? data
+                  : (
+                    <CellInput
+                      value={data}
+                      onChange={this.handleEditCell(rowIndex, colIndex)}
+                    />
+                  )
+                }
                 </div>
               </td>
             ))}
@@ -130,5 +149,3 @@ const CellInput = (props: CellInputProps) => {
     />
   )
 };
-
-const noop = () => {};

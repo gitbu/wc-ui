@@ -21,6 +21,7 @@ export class JsonVariableRow {
 
   @Prop() editData: Function
   @Prop() removeData: Function;
+  @Prop() selectNode: Function;
   @Prop() jsonKey: string
   @Prop() jsonVal: any
   @Prop() path: string
@@ -35,8 +36,8 @@ export class JsonVariableRow {
           draggable={this.canDrag}
           onMouseEnter={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}
-          onClick={this.handleEdit}
           onDragStart={this.handleDragStart}
+          onClick={this.handleSelectNode}
         >
           <span>{`"${this.jsonKey}": `}</span>
           {this.valueMode === VALUE_MODE.VIEW && (
@@ -73,12 +74,12 @@ export class JsonVariableRow {
           )}
           <span style={{ visibility: this.toolVisible, marginLeft: '8px' }}>
             {this.editAble && (
-              <span style={{ marginRight: '4px', cursor: 'pointer' }} onClick={this.handleEdit}>
+              <span onClick={this.handleEdit}>
                 <wc-icon type="edit" color="#ae81ff" size="14"></wc-icon>
               </span>
             )}
             {this.removeAble && (
-              <span style={{cursor: 'pointer'}} onClick={this.handleRemove}>
+              <span style={{ margin: '0px 4px' }} onClick={this.handleRemove}>
                 <wc-icon type="close" color="#fd971f" size="14"></wc-icon>
               </span>
             )}
@@ -184,5 +185,8 @@ export class JsonVariableRow {
     e.dataTransfer.setData('data', _data);
   }
 
-
+  handleSelectNode = (e) => {
+    e.stopPropagation();
+    this.selectNode(this.path)
+  }
 }

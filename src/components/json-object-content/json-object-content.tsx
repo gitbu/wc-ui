@@ -7,11 +7,6 @@ import { Component, Host, Prop, h } from '@stencil/core';
 })
 export class JsonObjectContent {
   @Prop() data: Object;
-  @Prop() addData: Function;
-  @Prop() editData: Function;
-  @Prop() removeData: Function;
-  @Prop() dragData: Function;
-  @Prop() setDropZonePath: Function;
   @Prop() addAble: boolean;
   @Prop() editAble: boolean;
   @Prop() removeAble: boolean;
@@ -19,6 +14,12 @@ export class JsonObjectContent {
   @Prop() path: string = '';
   @Prop() dropZonePath: string;
   @Prop() collapsed;
+  @Prop() addData: Function;
+  @Prop() editData: Function;
+  @Prop() removeData: Function;
+  @Prop() dragData: Function;
+  @Prop() setDropZonePath: Function;
+  @Prop() selectNode: Function
 
   getPath = (curKey) => {
     const prefix = this.path ? `${this.path}.` : '';
@@ -41,6 +42,7 @@ export class JsonObjectContent {
                 path={this.getPath(key)}
                 editData={this.editData}
                 removeData={this.removeData}
+                selectNode={this.selectNode} 
                 removeAble={this.removeAble}
                 canDrag={this.canDrag}
                 editAble={this.editAble}
@@ -59,13 +61,14 @@ export class JsonObjectContent {
                     removeAble={this.removeAble}
                     canDrag={this.canDrag}
                     addAble={this.addAble}
+                    editAble={this.editAble}
+                    collapsed={this.collapsed}
                     addData={this.addData}
                     dragData={this.dragData}
                     editData={this.editData}
                     removeData={this.removeData}
                     setDropZonePath={this.setDropZonePath}
-                    editAble={this.editAble}
-                    collapsed={this.collapsed}
+                    selectNode={this.selectNode}
                   />
                 </div>
                 <div style={{ height: '6px'}} />

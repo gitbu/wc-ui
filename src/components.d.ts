@@ -47,6 +47,7 @@ export namespace Components {
     'path': string;
     'removeAble': boolean;
     'removeData': Function;
+    'selectNode': Function;
     'setDropZonePath': Function;
   }
   interface WcJsonObjectKeyValue {
@@ -63,6 +64,7 @@ export namespace Components {
     'path': string;
     'removeAble': boolean;
     'removeData': Function;
+    'selectNode'?: Function;
     'setDropZonePath': Function;
   }
   interface WcJsonVariableRow {
@@ -74,22 +76,19 @@ export namespace Components {
     'path': string;
     'removeAble': boolean;
     'removeData': Function;
+    'selectNode': Function;
   }
   interface WcJsonView {
     'addAble': boolean;
     'canDrag': boolean;
     'collapsed': boolean | string;
-    'data': object;
+    'datas': string;
     'editAble': boolean;
     'removeAble': boolean;
   }
   interface WcTable {
-    'delCol': (index: number) => void;
-    'delRow': (index: number) => void;
-    'editCell': (rowIndex: number, colIndex: number, value: any) => void;
-    'insertCol': (destIndex: number) => void;
-    'insertRow': (destIndex: number) => void;
-    'tableData': [][];
+    'colOperable': boolean;
+    'tableData': any;
   }
 }
 
@@ -193,6 +192,7 @@ declare namespace LocalJSX {
     'path'?: string;
     'removeAble'?: boolean;
     'removeData'?: Function;
+    'selectNode'?: Function;
     'setDropZonePath'?: Function;
   }
   interface WcJsonObjectKeyValue {
@@ -209,6 +209,7 @@ declare namespace LocalJSX {
     'path'?: string;
     'removeAble'?: boolean;
     'removeData'?: Function;
+    'selectNode'?: Function;
     'setDropZonePath'?: Function;
   }
   interface WcJsonVariableRow {
@@ -220,22 +221,25 @@ declare namespace LocalJSX {
     'path'?: string;
     'removeAble'?: boolean;
     'removeData'?: Function;
+    'selectNode'?: Function;
   }
   interface WcJsonView {
     'addAble'?: boolean;
     'canDrag'?: boolean;
     'collapsed'?: boolean | string;
-    'data'?: object;
+    'datas'?: string;
     'editAble'?: boolean;
+    'onSelectNode'?: (event: CustomEvent<any>) => void;
     'removeAble'?: boolean;
   }
   interface WcTable {
-    'delCol'?: (index: number) => void;
-    'delRow'?: (index: number) => void;
-    'editCell'?: (rowIndex: number, colIndex: number, value: any) => void;
-    'insertCol'?: (destIndex: number) => void;
-    'insertRow'?: (destIndex: number) => void;
-    'tableData'?: [][];
+    'colOperable'?: boolean;
+    'onDelCol'?: (event: CustomEvent<any>) => void;
+    'onDelRow'?: (event: CustomEvent<any>) => void;
+    'onEditCell'?: (event: CustomEvent<any>) => void;
+    'onInsertCol'?: (event: CustomEvent<any>) => void;
+    'onInsertRow'?: (event: CustomEvent<any>) => void;
+    'tableData'?: any;
   }
 
   interface IntrinsicElements {
