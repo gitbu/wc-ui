@@ -23,6 +23,7 @@ module.exports = {
   },
   configureWebpack: {
     resolve: {
+      mainFields: ["main"],
       alias: {
         '@alias': '/to/some/dir'
       }
