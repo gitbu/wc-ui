@@ -12,10 +12,11 @@ module.exports = {
     sidebar: {
       '/docs/': [
         {
-          title: '开始',
+          title: '',
           collapsable: false,
           children: [
             'start',
+            'theme'
           ]
         }
       ]
