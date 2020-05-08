@@ -1,4 +1,4 @@
-import { Component, h, Prop, State, Event } from '@stencil/core';
+import { Component, h, Prop, State, Event, Watch } from '@stencil/core';
 import set from 'lodash/set';
 import cloneDeep from 'lodash/cloneDeep';
 import { isObject, isArray } from '../../utils/utils';
@@ -20,6 +20,11 @@ export class JsonView {
   @Prop() collapsed: boolean | string = '1';
 
   @State() data = JSON.parse(this.datas);
+
+  @Watch('datas')
+  changeData(newVal) {
+    this.data = JSON.parse(newVal);
+  }
 
   @Event({
     eventName: 'selectNode',
