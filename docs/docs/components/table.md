@@ -1,5 +1,11 @@
 # table 编辑数据表格
 
+## 示例
+
+<edit-table-data />
+
+
+
 ## Attributes
 
 | 参数         | 说明             | 类型                         | 可选值      | 默认值 |
@@ -7,6 +13,8 @@
 | tableData    | 表格的数据       | string(一维数据或二维数组的) |             | ''     |
 | col-add-able | 是否可以添加列   | boolean                      | true\|false | true   |
 | row-add-able | 是否可一个添加行 | boolean                      | true\|false | true   |
+
+
 
 ## Events
 
