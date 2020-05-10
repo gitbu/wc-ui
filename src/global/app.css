@@ -1,26 +1,24 @@
 :host {
-  /* 全局色 */
-  --wc-primary-color: #1890ff;
+  /* 主色 */
+  --wc-primary-color: #409EFF;
+
   /* 链接色 */
   --wc-link-color: #1890ff;
+
   /* 成功色 */
-  --wc-success-color: #52c41a;
+  --wc-success-color: #67C23A;
   /* 警告色 */
-  --wc-warning-color: #faad14;
+  --wc-warning-color: #E6A23C;
   /* 错误色 */
-  --wc-error-color: #f5222d;
-  /* 主字号 */
-  --wc-font-size-base: 14px;
-  /*  主文本色 */
-  --wc-text-color: rgba(0, 0, 0, 0.65);
-  /* 次文本色 */
-  --wc-text-color-secondary: rgba(0, 0, 0, 0.45);
-  /* 失效色 */
-  --wc-disabled-color: rgba(0, 0, 0, 0.25); 
-  /* 圆角 */
-  --wc-border-radius-base: 2px;
-  /* 边框色 */
-  --wc-border-color-base: #d9d9d9;
-  /* 浮层阴影 */
-  --wc-shadow-base: 0 2px 8px rgba(0, 0, 0, 0.15);
+  --wc-error-color: #F56C6C;
+
+  /*  主要文字颜色 */
+  --wc-primary-text-color: #303133;
+  /*  常规文字颜色 */
+  --wc-regular-text-color: #606266;
+  /* 次要文本色 */
+  --wc-secondary-text-color: #909399;
+  /* 占位文字 */
+  --wc-secondary-text-color: #C0C4CC;
+
 }

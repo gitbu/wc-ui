@@ -1,0 +1,56 @@
+{
+  "shareConfig": {
+    "coverImage": "",
+    "title": "这是#分享者#的大力推荐",
+    "description": "这是#分享者#大力推荐的H5"
+  },
+  "title": "未命名场景",
+  "pages": [
+    {
+      "uuid": "0dabb27c-0fd3-4b6e-b539-3e8ff4d95a90",
+      "name": "",
+      "elements": [
+        {
+          "uuid": "4ff7b22e-1718-4fdd-bf99-b92c2d121174",
+          "elName": "qk-text",
+          "animations": [
+            {
+              "type": "slideInDown",
+              "duration": 1,
+              "infinite": "",
+              "interationCount": 1,
+              "delay": 0
+            }
+          ],
+          "commonStyle": {
+            "position": "absolute",
+            "width": 375,
+            "height": 40,
+            "top": 63,
+            "left": 1,
+          },
+          "events": [
+            {
+              "type": "link",
+              "url": "http:www.baidu.com"
+            }
+          ],
+          "propsValue": {
+            "text": "这是一段文字"
+          },
+          "valueType": "String",
+          "isForm": false
+        }
+      ],
+      "commonStyle": {
+        "backgroundColor": "rgba(18, 159, 220, 1)",
+        "backgroundImage": "",
+        "backgroundSize": "cover"
+      }
+    }
+  ],
+  "author": "5dd759531659195eb93b15e6",
+  "created": "2020-05-10T09:24:40.661Z",
+  "updated": "2020-05-10T09:24:40.661Z",
+  "__v": 0
+}

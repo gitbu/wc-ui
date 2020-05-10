@@ -9,27 +9,26 @@
   <script nomodule src="/build/wc-ui.js"></script>
 </head>
 <body>
-  <!-- <wc-table col-operable="false" table-data='[["a","b","c","d"]]'></wc-table> -->
-  <wc-json-view
+  <wc-table col-add-able="false" table-data='[["a","b","c","d"]]'></wc-table>
+  <!-- <wc-json-view
     edit-able="true"
     remove-able="true"
     add-able="true"
     can-drag="true"
     collapsed="1"
     datas='{"a":1,"likes":["football"],"b":{"m":2,"frends":[{"name":"xm1","age":1},{"name":"xh1","age":2}],"t":{"h":33,"j":44},"s":true,"n":null}}'
-  >
+  > -->
   </wc-json-view>
   <script>
     let data = [['a', 'b', 'c', 'd']]
     const wcTable = document.querySelector('wc-table');
 
-    wcTable.addEventListener('insertRow', (e) => {
-      const index = e.detail;
+    wcTable.insertRow = (index) => {
       console.log(index);
       const _data = Array.from({length: data[0].length})
       data.splice(index, 0, _data);
       wcTable.setAttribute('table-data', JSON.stringify(data));
-    })
+    }
     wcTable.addEventListener('editCell', (e) => {
       const {
         rowIndex,
