@@ -28,8 +28,8 @@ export class Table {
   @Event() editCell
 
   handleAddRow = (index) => () => {
-    this.insertRow.emit(index + 1)
-    this.hostRef.insertRow(index + 1);
+    this.insertRow.emit(index)
+    this.hostRef.insertRow(index);
   }
 
   handleDelRow = (index) => () => {

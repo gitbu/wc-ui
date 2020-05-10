@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property      | Attribute      | Description | Type      | Default     |
-| ------------- | -------------- | ----------- | --------- | ----------- |
-| `colOperable` | `col-operable` |             | `boolean` | `true`      |
-| `tableData`   | `table-data`   |             | `any`     | `undefined` |
+| Property     | Attribute      | Description | Type      | Default     |
+| ------------ | -------------- | ----------- | --------- | ----------- |
+| `colAddAble` | `col-add-able` |             | `boolean` | `true`      |
+| `rowAddAble` | `row-add-able` |             | `boolean` | `true`      |
+| `tableData`  | `table-data`   |             | `any`     | `undefined` |
 
 
 ## Events
