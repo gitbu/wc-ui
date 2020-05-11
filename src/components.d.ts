@@ -44,7 +44,7 @@ export namespace Components {
     'dropZonePath': string;
     'editAble': boolean;
     'editData': Function;
-    'path': string;
+    'path': Array<any>;
     'removeAble': boolean;
     'removeData': Function;
     'selectNode': Function;
@@ -61,7 +61,7 @@ export namespace Components {
     'editData': Function;
     'jsonKey': String;
     'jsonVal': Object;
-    'path': string;
+    'path': Array<any>;
     'removeAble': boolean;
     'removeData': Function;
     'selectNode'?: Function;
@@ -73,7 +73,7 @@ export namespace Components {
     'editData': Function;
     'jsonKey': string;
     'jsonVal': any;
-    'path': string;
+    'path': Array<any>;
     'removeAble': boolean;
     'removeData': Function;
     'selectNode': Function;
@@ -189,7 +189,7 @@ declare namespace LocalJSX {
     'dropZonePath'?: string;
     'editAble'?: boolean;
     'editData'?: Function;
-    'path'?: string;
+    'path'?: Array<any>;
     'removeAble'?: boolean;
     'removeData'?: Function;
     'selectNode'?: Function;
@@ -206,7 +206,7 @@ declare namespace LocalJSX {
     'editData'?: Function;
     'jsonKey'?: String;
     'jsonVal'?: Object;
-    'path'?: string;
+    'path'?: Array<any>;
     'removeAble'?: boolean;
     'removeData'?: Function;
     'selectNode'?: Function;
@@ -218,7 +218,7 @@ declare namespace LocalJSX {
     'editData'?: Function;
     'jsonKey'?: string;
     'jsonVal'?: any;
-    'path'?: string;
+    'path'?: Array<any>;
     'removeAble'?: boolean;
     'removeData'?: Function;
     'selectNode'?: Function;

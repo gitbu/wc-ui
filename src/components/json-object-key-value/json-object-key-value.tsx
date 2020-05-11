@@ -15,7 +15,7 @@ export class JsonObjectKeyValue {
 
   @Prop() jsonKey: String = '';
   @Prop() jsonVal: Object
-  @Prop() path: string
+  @Prop() path: Array<any>
   @Prop() dropZonePath: string
   @Prop() addAble: boolean = false;
   @Prop() editAble: boolean = false;
@@ -48,8 +48,14 @@ export class JsonObjectKeyValue {
     return keys.length;
   }
 
+  get keyStyle() {
+    const cursor = 'pointer';
+
+    return { cursor };
+  }
+
   get dropZoneStyle() {
-    if (this._path === this.dropZonePath && this._path !== '') {
+    if (this.isPathEqual(this.path, this.dropZonePath) && this.path.length !== 0) {
       return {
 
         border: '1px dashed blue',
@@ -67,6 +73,7 @@ export class JsonObjectKeyValue {
   changeOpen(newVal) {
     this.changeOpenVal(newVal)
   }
+
 
 
   render() {
@@ -87,7 +94,7 @@ export class JsonObjectKeyValue {
         >
           <span class="icon-container" onClick={this.changeContentDisplayState}>{this.getIcon()}</span>
           {this.jsonKey && (
-            <span>
+            <span style={this.keyStyle} onClick={this.handleSelectNode}>
               {`"${this.jsonKey}": `}
             </span>
           )}
@@ -117,7 +124,7 @@ export class JsonObjectKeyValue {
           {this.open && (
             <wc-json-object-content
               data={this.jsonVal}
-              path={this._path}
+              path={this.path}
               dropZonePath={this.dropZonePath}
               removeAble={this.removeAble}
               canDrag={this.canDrag}
@@ -166,12 +173,6 @@ export class JsonObjectKeyValue {
     );
   }
 
-  get _path() {
-    const prefix = this.path ? `${this.path}.` : '';
-
-    return prefix +   this.jsonKey;
-  }
-
   handleMouseEnter = () => {
     this.toolVisible = 'visible'
   }
@@ -182,7 +183,7 @@ export class JsonObjectKeyValue {
 
   handleAdd = () => {
     if (isArray(this.jsonVal)) {
-      this.addData(this._path, null);
+      this.addData(this.path, null);
       return;
     }
 
@@ -208,11 +209,11 @@ export class JsonObjectKeyValue {
 
     const val = {key: this.newKey, value: null}
 
-    this.addData(this._path, val);
+    this.addData(this.path, val);
   }
 
   handleRemove = () => {
-    this.removeData(this._path);
+    this.removeData(this.path);
   }
 
   handleDragStart = (e) => {
@@ -222,7 +223,8 @@ export class JsonObjectKeyValue {
       [this.jsonKey as any]: this.jsonVal
     }
     const _data = JSON.stringify(data);
-    e.dataTransfer.setData('path', this._path);
+    const _path = JSON.stringify(this.path);
+    e.dataTransfer.setData('path', _path);
     e.dataTransfer.setData('data', _data);
   }
 
@@ -234,13 +236,13 @@ export class JsonObjectKeyValue {
   handleDragEnter = (e) => {
     e.stopPropagation();
     e.preventDefault();
-    this.setDropZonePath(this._path);
+    this.setDropZonePath(this.path);
   }
 
   handleDragLeave = (e) => {
     e.stopPropagation();
     e.preventDefault();
-    if (this.dropZonePath === this._path) {
+    if (this.isPathEqual(this.dropZonePath, this.path)) {
       this.setDropZonePath(this.path);
     }
   }
@@ -252,7 +254,8 @@ export class JsonObjectKeyValue {
     const data = e.dataTransfer.getData('data');
     const _data = JSON.parse(data);
     const sourcePath = e.dataTransfer.getData('path');
-    this.dragData(sourcePath, this._path, _data)
+    const _sourcePath = JSON.parse(sourcePath)
+    this.dragData(_sourcePath, this.path, _data)
   }
 
   changeOpenVal = (collapsed) => {
@@ -269,11 +272,10 @@ export class JsonObjectKeyValue {
         return;
       }
     }
-    
 
-    const deep = this._path.split('.').length;
+    const deep = this.path.length;
 
-    if (this._path === "" && deep == 1) {
+    if (this.path.length === 0 && deep == 1) {
       this.open = true;
       return;
     }
@@ -283,5 +285,14 @@ export class JsonObjectKeyValue {
     } else {
       this.open = false;
     }
+  }
+
+  handleSelectNode = (e) => {
+    e.stopPropagation();
+    this.selectNode(this.path)
+  }
+
+  isPathEqual = (sourcePath, destPath) => {
+    return JSON.stringify(sourcePath) === JSON.stringify(destPath);
   }
 }
