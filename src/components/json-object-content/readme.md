@@ -18,7 +18,7 @@
 | `dropZonePath`    | `drop-zone-path` |             | `string`   | `undefined` |
 | `editAble`        | `edit-able`      |             | `boolean`  | `undefined` |
 | `editData`        | --               |             | `Function` | `undefined` |
-| `path`            | `path`           |             | `string`   | `''`        |
+| `path`            | --               |             | `any[]`    | `undefined` |
 | `removeAble`      | `remove-able`    |             | `boolean`  | `undefined` |
 | `removeData`      | --               |             | `Function` | `undefined` |
 | `selectNode`      | --               |             | `Function` | `undefined` |
