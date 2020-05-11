@@ -87,7 +87,8 @@ export namespace Components {
     'removeAble': boolean;
   }
   interface WcTable {
-    'colOperable': boolean;
+    'colAddAble': boolean;
+    'rowAddAble': boolean;
     'tableData': any;
   }
 }
@@ -233,12 +234,13 @@ declare namespace LocalJSX {
     'removeAble'?: boolean;
   }
   interface WcTable {
-    'colOperable'?: boolean;
+    'colAddAble'?: boolean;
     'onDelCol'?: (event: CustomEvent<any>) => void;
     'onDelRow'?: (event: CustomEvent<any>) => void;
     'onEditCell'?: (event: CustomEvent<any>) => void;
     'onInsertCol'?: (event: CustomEvent<any>) => void;
     'onInsertRow'?: (event: CustomEvent<any>) => void;
+    'rowAddAble'?: boolean;
     'tableData'?: any;
   }
 

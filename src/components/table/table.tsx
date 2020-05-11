@@ -1,4 +1,4 @@
-import { Component, Prop, h, State, Watch, Event } from '@stencil/core';
+import { Component, Prop, Host, h, State, Watch, Event } from '@stencil/core';
 
 @Component({
   tag: 'wc-table',
@@ -9,8 +9,10 @@ import { Component, Prop, h, State, Watch, Event } from '@stencil/core';
   shadow: true
 })
 export class Table {
+  hostRef: any = '';
   @Prop() tableData;
-  @Prop() colOperable: boolean = true;
+  @Prop() colAddAble: boolean = true;
+  @Prop() rowAddAble: boolean = true;
 
   @State() data = JSON.parse(this.tableData)
 
@@ -26,19 +28,23 @@ export class Table {
   @Event() editCell
 
   handleAddRow = (index) => () => {
-    this.insertRow.emit(index + 1);
+    this.insertRow.emit(index)
+    this.hostRef.insertRow(index);
   }
 
   handleDelRow = (index) => () => {
     this.delRow.emit(index)
+    this.hostRef.delRow(index);
   }
 
   handleAddCol = (index) => () => {
     this.insertCol.emit(index);
+    this.hostRef.insertCol(index);
   }
 
   handleDelCol = (index) => () => {
     this.delCol.emit(index)
+    this.hostRef.delCol(index);
   }
 
   handleEditCell = (rowIndex: number, colIndex: number) => (e: any) => {
@@ -48,6 +54,7 @@ export class Table {
       value: e.target.value
     };
     this.editCell.emit(data);
+    this.hostRef.editCell(data);
   }
 
   get rowNum() {
@@ -60,8 +67,9 @@ export class Table {
 
   render() {
     return (
+      <Host ref={ele => this.hostRef = ele}>
       <table>
-        {this.colOperable && (
+        {this.colAddAble && (
           <tr>
             {Array.from({length: this.colNum}, () => 0).map((...item) => (
               <td
@@ -92,7 +100,7 @@ export class Table {
             {item.map((data, colIndex) => (
               <td>
                 <div>
-                {rowIndex === 0 && !this.colOperable
+                {rowIndex === 0 && !this.colAddAble
                   ? data
                   : (
                     <CellInput
@@ -104,23 +112,26 @@ export class Table {
                 </div>
               </td>
             ))}
-            <td
-              style={plusStyle}
-            >
-              <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around' }}>
-                <span onClick={this.handleAddRow(rowIndex)} style={{ cursor: 'pointer' }}>
-                  +
-                </span>
-                {rowIndex !== 0 && (
-                  <span onClick={this.handleDelRow(rowIndex)} style={{ cursor: 'pointer' }}>
-                    -
+            {this.rowAddAble && (
+              <td
+                style={plusStyle}
+              >
+                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around' }}>
+                  <span onClick={this.handleAddRow(rowIndex)} style={{ cursor: 'pointer' }}>
+                    +
                   </span>
-                )}
-              </div>
-          </td>
+                  {rowIndex !== 0 && (
+                    <span onClick={this.handleDelRow(rowIndex)} style={{ cursor: 'pointer' }}>
+                      -
+                    </span>
+                  )}
+                </div>
+              </td>
+            )}
           </tr>
         ))}
       </table>
+      </Host>
     );
   }
 }

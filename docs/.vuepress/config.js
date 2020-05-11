@@ -12,14 +12,32 @@ module.exports = {
     sidebar: {
       '/docs/': [
         {
-          title: '',
+          title: '开发指南',
           collapsable: false,
           children: [
             'start',
-            'theme'
+            'theme',
           ]
-        }
-      ]
+        },
+        {
+          title: '基础',
+          collapsable: false,
+          children: [
+            'basic/color',
+            'basic/font',
+            'basic/border',
+          ]
+        },
+        {
+          title: '组件',
+          collapsable: false,
+          children: [
+            'components/icon',
+            'components/json-view',
+            'components/table'
+          ]
+        },
+      ],
     }
   },
   configureWebpack: {
