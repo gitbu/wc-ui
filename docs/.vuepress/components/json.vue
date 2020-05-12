@@ -1,6 +1,7 @@
 <template>
   <div>
     <wc-json-view 
+      ref="jsonView"
       :datas="jsonData"
       :edit-able="editAble"
       :remove-able="removeAble"
@@ -8,7 +9,15 @@
       :can-drag="canDrag"
       :collapsed="collapsed"
     />
+    <div v-if="path.length > 0">
+      当前节点的路径：(路径是用一个数组表示的)
+      <wc-json-view 
+        :datas="_path"
+        :collapsed=2
+      />
+    </div>
     <div>
+      <h3>设置属性</h3>
       <el-checkbox v-model="editAble">可编辑</el-checkbox>
       <el-checkbox v-model="addAble">可添加</el-checkbox>
       <el-checkbox v-model="removeAble">可删除</el-checkbox>
@@ -32,6 +41,7 @@ export default {
   data() {
     return {
       jsonData: JSON.stringify(jsonData),
+      path: [],
       editAble: false,
       removeAble: false,
       addAble: false,
@@ -39,6 +49,18 @@ export default {
       collapsed: 1
     }
   },
+  computed: {
+    _path() {
+      return JSON.stringify(this.path)
+    }
+  },
+  mounted() {
+    console.log(this.$refs);
+    this.$refs.jsonView.addEventListener('selectNode', (e) => {
+      const { detail } = e;
+      this.path = detail;
+    })
+  }
 }
 const jsonData = {
   "shareConfig": {
