@@ -14,7 +14,7 @@
 | `editData`   | --            |             | `Function` | `undefined` |
 | `jsonKey`    | `json-key`    |             | `string`   | `undefined` |
 | `jsonVal`    | `json-val`    |             | `any`      | `undefined` |
-| `path`       | `path`        |             | `string`   | `undefined` |
+| `path`       | --            |             | `any[]`    | `undefined` |
 | `removeAble` | `remove-able` |             | `boolean`  | `undefined` |
 | `removeData` | --            |             | `Function` | `undefined` |
 | `selectNode` | --            |             | `Function` | `undefined` |

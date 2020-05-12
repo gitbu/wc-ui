@@ -24,7 +24,7 @@ export class JsonVariableRow {
   @Prop() selectNode: Function;
   @Prop() jsonKey: string
   @Prop() jsonVal: any
-  @Prop() path: string
+  @Prop() path: Array<any>
   @Prop() editAble: boolean
   @Prop() removeAble: boolean
   @Prop() canDrag: boolean
@@ -37,9 +37,10 @@ export class JsonVariableRow {
           onMouseEnter={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}
           onDragStart={this.handleDragStart}
-          onClick={this.handleSelectNode}
         >
-          <span>{`"${this.jsonKey}": `}</span>
+          <span style={this.keyStyle} onClick={this.handleSelectNode}>
+            {`"${this.jsonKey}": `}
+          </span>
           {this.valueMode === VALUE_MODE.VIEW && (
             <span
               style={{ color: this.getFontColorOfValue(this.jsonVal)}}
@@ -89,6 +90,12 @@ export class JsonVariableRow {
     );
   }
 
+  get keyStyle() {
+    const cursor = 'pointer';
+
+    return { cursor };
+  }
+
   getFontColorOfValue(val) {
     if (typeof(val) === 'boolean') return '#ae81ff';
     if (val === null) return '#f4bf75'
@@ -114,6 +121,7 @@ export class JsonVariableRow {
 
   handleEdit = () => {
     this.valueMode = VALUE_MODE.EDIT;
+    this.newVal = this.jsonVal;
     this.toolVisible = TOOL_VISIBLE.HIDDEN;
   }
 
@@ -181,7 +189,8 @@ export class JsonVariableRow {
       [this.jsonKey]: this.jsonVal
     }
     const _data = JSON.stringify(data);
-    e.dataTransfer.setData('path', this.path);
+    const _path = JSON.stringify(this.path);
+    e.dataTransfer.setData('path', _path);
     e.dataTransfer.setData('data', _data);
   }
 

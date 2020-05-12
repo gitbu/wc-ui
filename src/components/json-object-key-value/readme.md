@@ -19,7 +19,7 @@
 | `editData`        | --               |             | `Function`          | `undefined` |
 | `jsonKey`         | --               |             | `String`            | `''`        |
 | `jsonVal`         | --               |             | `Object`            | `undefined` |
-| `path`            | `path`           |             | `string`            | `undefined` |
+| `path`            | --               |             | `any[]`             | `undefined` |
 | `removeAble`      | `remove-able`    |             | `boolean`           | `false`     |
 | `removeData`      | --               |             | `Function`          | `undefined` |
 | `selectNode`      | --               |             | `Function`          | `undefined` |

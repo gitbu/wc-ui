@@ -1,4 +1,6 @@
 import { Component, Host, Prop, h } from '@stencil/core';
+import cloneDeep from 'lodash/cloneDeep';
+import { isArray, isObject } from '../../utils/utils';
 
 @Component({
   tag: 'wc-json-object-content',
@@ -11,7 +13,7 @@ export class JsonObjectContent {
   @Prop() editAble: boolean;
   @Prop() removeAble: boolean;
   @Prop() canDrag: boolean;
-  @Prop() path: string = '';
+  @Prop() path: Array<any>;
   @Prop() dropZonePath: string;
   @Prop() collapsed;
   @Prop() addData: Function;
@@ -21,10 +23,23 @@ export class JsonObjectContent {
   @Prop() setDropZonePath: Function;
   @Prop() selectNode: Function
 
-  getPath = (curKey) => {
-    const prefix = this.path ? `${this.path}.` : '';
+  getPath = (curKey, value) => {
+    const path = cloneDeep(this.path)
+    if (isArray(value)) {
+      path.push({key: curKey, type: 'Array'});
 
-    return prefix +   curKey;
+      return path;
+    }
+
+    if (isObject(value)) {
+      path.push({key: curKey, type: 'Object'});
+
+      return path;
+    }
+
+    path.push({key: curKey, type: typeof(value)});
+
+    return path;
   }
 
 
@@ -39,7 +54,7 @@ export class JsonObjectContent {
                 key={key}
                 jsonKey={key}
                 jsonVal={value}
-                path={this.getPath(key)}
+                path={this.getPath(key, value)}
                 editData={this.editData}
                 removeData={this.removeData}
                 selectNode={this.selectNode} 
@@ -56,7 +71,7 @@ export class JsonObjectContent {
                     key={key}
                     jsonKey={key}
                     jsonVal={value}
-                    path={this.path}
+                    path={this.getPath(key, value)}
                     dropZonePath={this.dropZonePath}
                     removeAble={this.removeAble}
                     canDrag={this.canDrag}

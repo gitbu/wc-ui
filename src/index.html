@@ -22,6 +22,11 @@
   <script>
     let data = [['a', 'b', 'c', 'd']]
     const wcTable = document.querySelector('wc-table');
+    const wcJsonView = document.querySelector('wc-json-view');
+
+    wcJsonView.addEventListener('selectNode', (e) => {
+      console.log('@', e);
+    })
 
     wcTable.insertRow = (index) => {
       console.log(index);
